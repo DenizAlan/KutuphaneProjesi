@@ -1,0 +1,12 @@
+﻿@model YayinEvi
+
+<form method="post" action="">
+
+	<input asp-for="Ad" class="form-control" placeholder="Yayinevi ADI :" value="@Model.Ad" /> <br />
+	<input asp-for="Adres" class="form-control" placeholder="Yayinevi Adresi :" value="@Model.Adres" /> <br />
+	<input asp-for="Tel" class="form-control" placeholder="Yayinevi tel" :" value="@Model.Tel" /> <br />
+
+	<button class="btn btn-success" type="submit">Güncelle</button>
+
+
+</form>

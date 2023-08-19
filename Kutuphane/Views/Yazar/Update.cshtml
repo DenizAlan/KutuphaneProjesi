@@ -1,0 +1,11 @@
+﻿@model Yazar
+
+<form method="post" action="">
+
+	<input asp-for="Ad" class="form-control" placeholder="YAZARIN ADI :" value="@Model.Ad"/> <br />
+	<input asp-for="Ozgecmis" class="form-control" placeholder="YAZARIN Özgeçmişi :" value="@Model.Ozgecmis" /> <br />
+
+	<button class="btn btn-success" type="submit">Güncelle</button>
+
+
+</form>

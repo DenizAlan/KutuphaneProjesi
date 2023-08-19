@@ -1,0 +1,36 @@
+﻿@model List<Yazar> 
+
+<a asp-controller="Yazar" asp-action="Add" class="btn btn-primary">Ekle</a>
+
+<table id="tblYazarlar" class="table table-striped"> 
+    <thead>
+        <tr>
+            <th>Yazar adı</th>
+            <th>Yazar Özgeçmiş</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach(Yazar item in Model)
+        {
+            <tr>
+            <td>@item.Ad</td>
+            <td>@item.Ozgecmis</td>
+        <td> <a asp-action="Delete" asp-controller="Yazar" asp-route-id="@item.Id" class="btn btn-danger">Sil</a> | 
+            <a asp-action="Update" asp-controller="Yazar" asp-route-id="@item.Id" class="btn btn-success">Düzenle</a></td>
+            </tr>
+        }
+        
+
+    </tbody>
+
+</table>
+
+
+
+
+
+
+
