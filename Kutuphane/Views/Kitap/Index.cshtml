@@ -1,0 +1,51 @@
+﻿@model List<Kitap>
+<a asp-action="Add" asp-controller="Kitap" class="btn btn-primary" >Ekle</a>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+			<td>Ad</td>
+			<td>ISBN</td>
+			<td>Yazarlar</td>
+			<td>YayınEvleri</td>
+			<td>İşlemler</td>
+
+			</tr>
+
+		</thead>
+		<tbody>
+		@foreach(Kitap kitap in Model)
+		{
+			<tr>
+				<td>@kitap.Ad</td>
+				<td>@kitap.ISBN</td>
+				<td>
+					@foreach(Yazar yazar in kitap.Yazarlar)
+					{
+						@yazar.Ad <br />
+					}
+				</td>
+				<td>
+					@foreach (YayinEvi yayinEvi in kitap.YayinEvleri)
+					{
+						@yayinEvi.Ad <br />
+					}
+					
+				</td>
+				<td><a asp-action="Delete" asp-controller="Kitap" asp-all-route-id="@kitap.Id" class="btn btn-danger">Sil</a> </td>
+
+			</tr>
+		}
+		</tbody>
+
+
+
+
+
+
+
+
+
+
+
+	</table> 

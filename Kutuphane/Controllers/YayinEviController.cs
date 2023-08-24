@@ -19,18 +19,18 @@ namespace Kutuphane.Controllers
             return View(_context.YayinEvleri.ToList());
         }
 
-        public IActionResult Add()
-        {
-            return View();
-        }
-        [HttpPost]
+        //public IActionResult Add()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
 
-        public IActionResult Add(YayinEvi yayinEvi) 
-        {
-            _context.YayinEvleri.Add(yayinEvi);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //public IActionResult Add(YayinEvi yayinEvi) 
+        //{
+        //    _context.YayinEvleri.Add(yayinEvi);
+        //    _context.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         public IActionResult Delete(int id)
         {
@@ -39,18 +39,51 @@ namespace Kutuphane.Controllers
             return RedirectToAction("Index");
         }
 
-        
-        public IActionResult Update (int id)
-        {
-            return View(_context.YayinEvleri.Find(id));
-        }
+		public IActionResult UpSert(int? id)
+		{
+			if (id == 0)
+			{
+				return View();
+			}
+            else
+            {
+				return View(_context.YayinEvleri.Find(id));
+			}
+			
+		}
         [HttpPost]
+		public IActionResult UpSert(YayinEvi yayinEvi)
+		{
+            if (yayinEvi != null)
+            {
+				if (yayinEvi.Id == 0)
+				{
+					_context.YayinEvleri.Add(yayinEvi);
 
-        public IActionResult Update(YayinEvi yayinEvi)
-        {
-            _context.YayinEvleri.Update(yayinEvi);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+				}
+				else
+				{
+					_context.YayinEvleri.Update(yayinEvi);
+
+				}
+				_context.SaveChanges();
+			}
+		
+			return RedirectToAction("Index");
+		}
+
+
+		//public IActionResult Update (int id)
+  //      {
+  //          return View(_context.YayinEvleri.Find(id));
+  //      }
+  //      [HttpPost]
+
+  //      public IActionResult Update(YayinEvi yayinEvi)
+  //      {
+  //          _context.YayinEvleri.Update(yayinEvi);
+  //          _context.SaveChanges();
+  //          return RedirectToAction("Index");
+  //      }
     }
 }

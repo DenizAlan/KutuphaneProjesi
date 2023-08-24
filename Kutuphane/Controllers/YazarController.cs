@@ -21,17 +21,17 @@ namespace Kutuphane.Controllers
             return View(_context.Yazarlar.ToList<Yazar>());
         }
 
-        public IActionResult Add()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Add(Yazar yazar)
-        {
-            _context.Yazarlar.Add(yazar);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //public IActionResult Add()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public IActionResult Add(Yazar yazar)
+        //{
+        //    _context.Yazarlar.Add(yazar);
+        //    _context.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         public IActionResult Delete(int id)
         {
@@ -53,18 +53,46 @@ namespace Kutuphane.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Update(int id) 
-        {
-            return View(_context.Yazarlar.Find(id));
-        }
+        //public IActionResult Update(int id)
+        //{
+        //    return View(_context.Yazarlar.Find(id));
+        //}
 
-        [HttpPost]
-        public IActionResult Update(Yazar yazar)
+        public IActionResult UpSert(int? id)
         {
-            _context.Yazarlar.Update(yazar);
-            _context.SaveChanges();
+            if (id!=null)
+            {
+                return View(_context.Yazarlar.Find(id));
+            }
+            else
+            {
+				return View();
+			}
+          
+        }
+        [HttpPost]
+        public IActionResult UpSert(Yazar yazar)
+        {
+            if (yazar.Id == 0)
+            {
+                _context.Yazarlar.Add(yazar);
+                _context.SaveChanges();
+            }
+            else
+            {
+                _context.Yazarlar.Update(yazar);
+                _context.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
+
+        //[HttpPost]
+        //public IActionResult Update(Yazar yazar)
+        //{
+        //    _context.Yazarlar.Update(yazar);
+        //    _context.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
         
     }
 }
